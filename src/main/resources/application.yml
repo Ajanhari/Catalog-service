@@ -1,0 +1,26 @@
+#Port binding—Unlike traditional applications that depend on an external server being available in the execution environment, cloud native applications are self-contained and export their
+# services by binding to a port that can be configured depending on the environment.
+server:
+  port: 8081
+  tomcat:
+    keep-alive-timeout: 15s #how long to keep a connection open while waiting for new HTTP requests.
+    connection-timeout: 2s #defines a limit for how much time Tomcat should wait between accepting a TCP connection from a client and actually receiving the HTTP request
+    threads:
+      max: 50     #configure the maximum number of request processing threads
+      min-spare: 5 #the minimum number of threads that should always be kept running
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Web server—A server that handles HTTP requests coming from a client and replies with HTTP responses, such as Apache HTTPD.
+#Servlet container—A component, part of a web server, that provides an execution context for web applications using the Java Servlet API (like Spring MVC apps). Tomcat (Catalina) is one example.
+#Application server—A server that provides a complete execution environment (like Jakarta EE) for different types of applications and supports several protocols, such as WildFly.
