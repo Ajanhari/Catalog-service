@@ -12,11 +12,11 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
       - name: Set up JDK
-          uses: actions/setup-java@v3
-          with:
-            distribution: temurin
-            java-version: 17
-            cache: gradle
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
       - name: Code vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan
