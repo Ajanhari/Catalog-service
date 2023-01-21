@@ -30,3 +30,23 @@
 #  Application properties from application.properties and application.yml files packaged outside your JAR
 #  Profile-specific application properties from application-{profile}.properties and application-{profile}.yml files packaged inside your JAR
 #  Application properties from application.properties and application.yml files packaged inside your JAR
+
+==================================================================================================
+                               EXTERNALIZING CONFIGURATION
+==================================================================================================
+#The Spring Environment abstraction provides a unified interface for accessing properties and profiles.
+#Properties are key/value pairs used to store configuration.
+#Profiles are logical groups of beans registered only when a specific profile is active.
+#Spring Boot collects properties from different sources according to precedence rules. From the highest to the lowest precedence, properties can be defined in command-line arguments, JVM system variables, OS environment variables, profile-specific property files, and generic property files.
+#Spring beans can access properties from the Environment object by injecting the value with the @Value annotation, or from a bean mapped to a set of properties with the @ConfigurationProperties annotation.
+#The active profiles can be defined with the spring.profiles.active property.
+#The @Profile annotation marks beans or configuration classes to be considered only when the specified profile is active.
+#Properties, as managed in Spring Boot, provide externalized configuration as defined by the 15-Factor methodology, but that’s not enough.
+#A configuration server handles aspects like secret encryption, configuration traceability, versioning, and context refreshing at runtime with no restart.
+#A configuration server can be set up with the Spring Cloud Config Server library.
+#The configuration itself can be stored according to different strategies, such as in a dedicated Git repository.
+#The config server uses the application name, active profiles, and Git-specific labels to identify which configuration should be provided to which application.
+#A Spring Boot application can be configured through a config server using the Spring Cloud Config Client library.
+#@ConfigurationProperties beans are configured to listen to RefreshScopeRefreshedEvent events.
+#RefreshScopeRefreshedEvent events can be triggered after a new change is pushed to the configuration repository, so that the client application reloads the context using the latest configuration data.
+#Spring Boot Actuator defines an /actuator/refresh endpoint that you can use to trigger the event manually.

@@ -31,6 +31,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web' // provides the necessary libraries for building web applications with Spring MVC and includes Tomcat as the default embedded server.
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.retry:spring-retry'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor' // will automatically generate metadata for the new properties and store them in META-INF/spring-configuration-metadata.json when building the project.
