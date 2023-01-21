@@ -50,3 +50,10 @@
 #@ConfigurationProperties beans are configured to listen to RefreshScopeRefreshedEvent events.
 #RefreshScopeRefreshedEvent events can be triggered after a new change is pushed to the configuration repository, so that the client application reloads the context using the latest configuration data.
 #Spring Boot Actuator defines an /actuator/refresh endpoint that you can use to trigger the event manually.
+
+===============================================================================
+
+===============================================================================
+
+docker run -d --name polar-postgres -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=polardb_catalog -p 5432:5432 postgres:14.4
+

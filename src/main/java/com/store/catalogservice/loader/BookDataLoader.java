@@ -1,5 +1,6 @@
 package com.store.catalogservice.loader;
 
+import java.util.List;
 import com.store.catalogservice.domain.Book;
 import com.store.catalogservice.repo.BookRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -16,21 +17,20 @@ For example, you could define a polar.testdata.enabled custom property and
 use the @ConditionalOnProperty(name = "polar.testdata .enabled", havingValue = "true") annotation on the BookDataLoader class.
  */
 @Component
-@Profile("testData") //  It will be registered only when the testdata profile is active.
+@Profile("testdata")
 public class BookDataLoader {
 
-    private final BookRepository bookRepository;
-    public BookDataLoader(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+	private final BookRepository bookRepository;
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void loadBookTestData() {
-        var book1 = new Book("1234567891", "Northern Lights",
-                "Lyra Silverstar", 9.90);
-        var book2 = new Book("1234567892", "Polar Journey",
-                "Iorek Polarson", 12.90);
-        bookRepository.save(book1);
-        bookRepository.save(book2);
-    }
+	public BookDataLoader(BookRepository bookRepository) {
+		this.bookRepository = bookRepository;
+	}
+
+	@EventListener(ApplicationReadyEvent.class)
+	public void loadBookTestData() {
+		bookRepository.deleteAll();
+		var book1 = Book.of("1234567891", "Northern Lights", "Lyra Silverstar", 9.90, "Polarsophia");
+		var book2 = Book.of("1234567892", "Polar Journey", "Iorek Polarson", 12.90, "Polarsophia");
+		bookRepository.saveAll(List.of(book1, book2));
+	}
 }
