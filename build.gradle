@@ -8,6 +8,7 @@ group = 'com.store'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
+// Configures Gradle to use the Configuration Processor when building the project
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -38,6 +39,7 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql' // Provides a JDBC driver that allows the application to connect to a PostgreSQL database.
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor' // will automatically generate metadata for the new properties and store them in META-INF/spring-configuration-metadata.json when building the project.
     testImplementation 'org.springframework.boot:spring-boot-starter-test' // provides several libraries and utilities for testing applications, including Spring Test, JUnit, AssertJ, and Mockito. It’s automatically included in every Spring Boot project.
     testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.testcontainers:postgresql'
@@ -50,6 +52,13 @@ dependencyManagement {
     }
 }
 
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
+
