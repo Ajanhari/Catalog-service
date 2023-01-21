@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest // which loads a Spring application context in a mock web environment (no running server)
+@WebMvcTest(BookController.class) // which loads a Spring application context in a mock web environment (no running server)
 public class BookControllerMvcTests {
 
     @Autowired
