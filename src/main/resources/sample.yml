@@ -13,3 +13,20 @@
 # https://github.com/features/actions - GitHub Actions
 
 # https://tekton.dev/ - popular choice for defining deployment pipelines and other software workflows
+
+# https://yaml.org/
+
+#The following is a prioritized list of some of the most common property sources, starting with the highest priority:
+#  @TestPropertySource annotations on test classes
+#  Command-line arguments
+#  JVM System properties from System.getProperties()
+#  OS environment variables from System.getenv()
+#  Configuration data files
+#  @PropertySource annotations on @Configuration classes
+#  Default properties from SpringApplication.setDefaultProperties
+
+#Configuration data files can be further prioritized, starting with the highest priority:
+#  Profile-specific application properties from application-{profile}.properties and application-{profile}.yml files packaged outside your JAR
+#  Application properties from application.properties and application.yml files packaged outside your JAR
+#  Profile-specific application properties from application-{profile}.properties and application-{profile}.yml files packaged inside your JAR
+#  Application properties from application.properties and application.yml files packaged inside your JAR

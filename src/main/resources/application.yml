@@ -9,6 +9,18 @@ server:
       max: 50     #configure the maximum number of request processing threads
       min-spare: 5 #the minimum number of threads that should always be kept running
 
+polar:
+  greeting: Welcome to the local book catalog!
+
+spring:
+  application:
+    name: catalog-service
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+
 
 
 
