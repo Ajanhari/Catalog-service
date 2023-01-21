@@ -1,3 +1,4 @@
+/*
 package com.store.catalogservice.repo;
 
 import com.store.catalogservice.domain.Book;
@@ -18,12 +19,6 @@ public class InMemoryBookRepository implements BookRepository{
     }
 
     @Override
-    public Optional<Book> findByIsbn(String isbn) {
-        return existsByIsbn(isbn) ? Optional.of(books.get(isbn)) :
-                Optional.empty();
-    }
-
-    @Override
     public boolean existsByIsbn(String isbn) {
         return books.get(isbn) != null;
     }
@@ -39,3 +34,4 @@ public class InMemoryBookRepository implements BookRepository{
         books.remove(isbn);
     }
 }
+*/
