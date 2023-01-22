@@ -18,6 +18,8 @@
 
 # https://github.com/GoogleContainerTools/jib - Another option for packaging Java applications as container images without writing a Dockerfile is using Jib
 
+# http://www.sigstore.dev/
+
 #The following is a prioritized list of some of the most common property sources, starting with the highest priority:
 #  @TestPropertySource annotations on test classes
 #  Command-line arguments
@@ -58,6 +60,9 @@
 ===============================================================================
 docker network create catalog-network
 
+docker network rm catalog-network
 docker run -d --name polar-postgres --net catalog-network -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=polardb_catalog -p 5432:5432 postgres:14.4
 
-docker run -d --name catalog-service --net catalog-network -p 8081:8081 -e SPRING_DATASOURCE_URL= jdbc:postgresql://polar-postgres:5432/polardb_catalog -e SPRING_PROFILES_ACTIVE=testdata catalog-service
+docker run -d --name catalog-service --net catalog-network -p 8081:8081 -e SPRING_DATASOURCE_URL= jdbc:postgresql://polar-postgres:5432/polardb_catalog -e SPRING_PROFILES_ACTIVE=testdata -e SPRING_DATASOURCE_USERNAME=user -e SPRING_DATASOURCE_PASSWORD=password catalog-service
+
+gradle bootBuildImage --imageName ghcr.io/ajanhari/catalog-service --publishImage -PregistryUrl=ghcr.io -PregistryUsername=ajanhari -PregistryToken=<your_github_token>
